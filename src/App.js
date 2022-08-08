@@ -11,7 +11,7 @@ function App (){
         <div>
        <Navbar/>
        <Routes>
-       <Route path="/AllMeetUp" element={<AllMeetUp/>}/>
+       <Route path="/" element={<AllMeetUp/>}/>
        <Route path="/NewMeetUp" element={<NewMeetUp/>}/>
        <Route path="/Favourite" element={<Favourite/>}/>
        <Route path="*" element={<h3>page not found</h3>}/>

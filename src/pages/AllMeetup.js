@@ -1,3 +1,6 @@
+ import React from "react"
+ import MeetupList from "../component/meetup/MeeetupList"
+ 
 
 const All_Data= [
   {
@@ -21,10 +24,7 @@ function AllMeetup()
     return(
       <section>
       <h1>All Menue </h1>
-      <ul>
-      {All_Data.map((food)=>{return <li key={food.id}>{food.title}</li>
-    })}
-    </ul>
+      <MeetupList foods={All_Data}/>
       </section>  
     )
     
