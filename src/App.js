@@ -1,17 +1,22 @@
-import {Route ,Switch} from "react"
+import React from "react"
+import {Route,Routes} from 'react-router-dom'
 import AllMeetUp from "./pages/AllMeetup"
 import NewMeetUp from "./pages/NewMeetup"
 import Favourite from "./pages/Favourite"
+import Navbar from "./component/layout/NavBar"
 
 function App (){
 
     return(
         <div>
-       <Switch>
-       <Route path="/" exact><AllMeetUp/></Route>,
-       <Route path="/NewMeetUp"><NewMeetUp/></Route>,
-       <Route path="/Favourite"><Favourite/></Route>
-       </Switch>
+       <Navbar/>
+       <Routes>
+       <Route path="/AllMeetUp" element={<AllMeetUp/>}/>
+       <Route path="/NewMeetUp" element={<NewMeetUp/>}/>
+       <Route path="/Favourite" element={<Favourite/>}/>
+       <Route path="*" element={<h3>page not found</h3>}/>
+         </Routes>  
+       
        </div>
     )
 }
