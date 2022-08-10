@@ -13,7 +13,7 @@ function nav(){
                 <Link className="nav-link active" to="/NewMeetUp">NewMeetUp</Link>
               </li>
               <li className="nav-item ">
-                <Link className="nav-link active" aria-current="page" to="/Favourite">Favourite</Link>
+                <Link className="nav-link active" aria-current="page" to="/List">Another-product</Link>
               </li>
     
             </ul>
