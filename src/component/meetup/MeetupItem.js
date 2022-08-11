@@ -1,13 +1,20 @@
 import style from "./MeetupItem.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faTrash);
+
+library.add(faTrash, faEdit);
 
 function MeetupItem(props) {
-  const { img, title, description ,handeldelete} = props;
- 
+  
+  const { id, img, title, description, onDelete } = props;
+  const handeldelete = () => {
+    onDelete(id);
+  };
+
+  
+  
   return (
     <div className={style.big}>
       <div className={style.item}>
@@ -18,8 +25,11 @@ function MeetupItem(props) {
           <h5 className="card-title">{title}</h5>
           <p className="card-text">{description}</p>
           <div>
-            <button className="btn btn-dark" onClick={handeldelete}>
+            <button className={style.buttondelete} onClick={handeldelete}>
               <FontAwesomeIcon icon="trash" />
+            </button>
+            <button className={style.buttonedit} >
+              <FontAwesomeIcon icon="edit" />
             </button>
           </div>
         </div>

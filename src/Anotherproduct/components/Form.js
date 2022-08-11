@@ -3,13 +3,13 @@ import React, {useEffect} from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const Form = (props) => {
-  const { input, setInput, todos, setTodo ,editTodo,setEdittodo} = props;
+  const { input, setInput, todos, setTodo ,editTodo,settEdittodo} = props;
 const updateTodo = (title,id,completed)=>{
 const newTodo = todos.map(todo=>
     todo.id === id ? {title, id, completed} : todo
 )
 setTodo(newTodo)
-setEdittodo("")
+settEdittodo("")
 }
 useEffect(()=>{
     if(editTodo){

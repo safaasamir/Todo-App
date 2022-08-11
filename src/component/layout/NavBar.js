@@ -7,14 +7,18 @@ function nav(){
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-2">
             <li className="nav-item ">
-            <Link className="nav-link active" aria-current="page" to="/">AllMeetUp</Link>
+            <Link className="nav-link active" aria-current="page" to="/">All-MeetUp</Link>
           </li>
               <li className="nav-item ">
-                <Link className="nav-link active" to="/NewMeetUp">NewMeetUp</Link>
+                <Link className="nav-link active" to="/NewMeetUp">ADD-MeetUp</Link>
               </li>
               <li className="nav-item ">
                 <Link className="nav-link active" aria-current="page" to="/List">Another-product</Link>
               </li>
+              <li className="nav-item ">
+                <Link className="nav-link active" aria-current="page" to="/edit">edit</Link>
+              </li>
+              
     
             </ul>
           </div>

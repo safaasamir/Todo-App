@@ -4,13 +4,16 @@ import MeetupList from "../component/meetup/MeeetupList";
 function AllMeetup() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedMeetup, setloadedMeetup] = useState([]);
-  //const[data,setdata]=useState([])
+  const [error, setError] = useState("");
   useEffect(() => {
     setIsLoading(true);
+    setError("")
 
     fetch("https://react-start-dce6d-default-rtdb.firebaseio.com/meetups.json")
       .then((responce) => {
-        return responce.json();
+        if (responce) {
+          return responce.json();
+        }
       })
       .then((data) => {
         const meetups = [];
@@ -19,25 +22,20 @@ function AllMeetup() {
             id: key,
             ...data[key],
           };
+
           meetups.push(meetup);
         }
         setIsLoading(false);
         setloadedMeetup(meetups);
       })
-      ///new
-      .catch(
-        <div class="alert alert-danger">
-          <strong>error 404! </strong> <p> page Not found</p><ul><li>check your network</li>
-          <li>check your data</li></ul>
-        </div>
-      );
+      
+      .catch(() => {
+        setIsLoading(false);
+         setError("Couldn't find products, retry later!");
+        console.log("error in fetch open network ")
+      });
   }, []);
-  ///new
-  const handelarDelete=(id)=>{
-    let allData = [...loadedMeetup];
-    allData = allData.filter((datas) => datas.id !== id);
-    setloadedMeetup(allData);
-  }
+
   if (isLoading) {
     return (
       <div className="d-flex justify-content-center my-3">
@@ -45,10 +43,21 @@ function AllMeetup() {
       </div>
     );
   }
+  if (error) {
+    return (
+      <div className="alert alert-danger">
+        <h3 className="text-center">{error}</h3>
+        <ul >
+        <li >check your  network</li>
+        <li >check your Api data</li></ul>
+      </div>
+    );
+  }
+
   return (
     <section>
       <h1>All places </h1>
-      <MeetupList /*new*/ handeldelete={handelarDelete}places={loadedMeetup} />
+      <MeetupList plac={setloadedMeetup} places={loadedMeetup} />
     </section>
   );
 }
