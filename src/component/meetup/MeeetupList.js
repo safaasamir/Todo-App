@@ -8,7 +8,7 @@ import EditForm from "./EditForm";
 
 function MeetupList(props) {
   const { plac, places } = props;
-  console.log(places);
+  
 
   const [edited_data, setEditData] = useState([]);
   const [loading, setIsLoading] = useState(true);
@@ -37,7 +37,7 @@ function MeetupList(props) {
       .catch((err) => {
         console.log("error1");
       });
-    console.log(`id= ${id}`);
+   
   };
   ///////////////////////////
 
@@ -49,7 +49,7 @@ function MeetupList(props) {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        
 
         const item_details = {
           id: id,
@@ -59,12 +59,12 @@ function MeetupList(props) {
         };
         setIsLoading(false);
         setEditData(item_details);
-        console.log("editdata");
-        console.log(edited_data);
+       
       })
 
       .catch((err) => {
         console.log(err);
+       
       });
   };
 
@@ -79,7 +79,7 @@ function MeetupList(props) {
       (<EditForm data={edited_data} items={loading} />)
     );
   }
-
+ 
   return (
     <div>
       <ul className={style.list}>

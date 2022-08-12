@@ -11,7 +11,9 @@ function MeetupItem(props) {
   const { id, img, title, description, onDelete, onEdit} = props;
   
   const handeldelete = () => {
-    onDelete(id);
+    
+   if(window.confirm("Are you sure you want to delete ")){
+    onDelete(id);}
   };
   const handelEdit = () => {
     onEdit(id);

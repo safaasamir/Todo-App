@@ -8,7 +8,7 @@ const EditForm = (props) => {
   const [loadingSubmit, setloadingSubmit] = useState(false);
   const [error, setError] = useState("");
 
-  console.log("function has been used");
+  
 
   const [formData, setFormData] = useState({
     id: data?.id,
@@ -43,7 +43,8 @@ const EditForm = (props) => {
         window.location.reload()
       })
       .catch((err) => {
-        console.log(err);
+        setloadingSubmit(false);
+        setError("Couldn't find data, retry later!");
       });
   };
 
@@ -63,10 +64,7 @@ const EditForm = (props) => {
     return (
       <div className="alert alert-danger">
         <h3 className="text-center">{error}</h3>
-        <ul>
-          <li>check your network</li>
-          <li>check your Api data</li>
-        </ul>
+       
       </div>
     );
   }

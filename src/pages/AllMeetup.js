@@ -16,7 +16,7 @@ function AllMeetup() {
         }
       })
       .then((data) => {
-        console.log(data)
+        
         const meetups = [];
         for (const key in data) {
           const meetup = {
@@ -32,7 +32,7 @@ function AllMeetup() {
       
       .catch(() => {
         setIsLoading(false);
-         setError("Couldn't find products, retry later!");
+         setError("Couldn't find data, retry later!");
         console.log("error in fetch(firebase api) open network ")
       });
   }, []);
