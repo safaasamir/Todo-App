@@ -20,7 +20,7 @@ function NewMeetup() {
   }
   return (
     <div>
-      <h3 className="m-2">Add meet up</h3>
+      <h3 className="m-2 ">Add meet up</h3>
       <AddMeetUp OnAddmeetup={AddMeetUpHandelar} />
     </div>
   );

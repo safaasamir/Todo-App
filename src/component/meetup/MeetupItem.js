@@ -8,9 +8,13 @@ library.add(faTrash, faEdit);
 
 function MeetupItem(props) {
   
-  const { id, img, title, description, onDelete } = props;
+  const { id, img, title, description, onDelete, onEdit} = props;
+  
   const handeldelete = () => {
     onDelete(id);
+  };
+  const handelEdit = () => {
+    onEdit(id);
   };
 
   
@@ -28,7 +32,7 @@ function MeetupItem(props) {
             <button className={style.buttondelete} onClick={handeldelete}>
               <FontAwesomeIcon icon="trash" />
             </button>
-            <button className={style.buttonedit} >
+            <button className={style.buttonedit} onClick={handelEdit}>
               <FontAwesomeIcon icon="edit" />
             </button>
           </div>

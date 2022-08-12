@@ -1,15 +1,19 @@
 import MeetupItem from "./MeetupItem";
 import style from "./MeetupList.module.css";
-import {useNavigate} from "react-router-dom";
+import React, { useState } from "react";
+//import { useNavigate } from "react-router-dom";
 
-
-
+import EditForm from "./EditForm";
+//import nav from "../layout/NavBar";
 
 function MeetupList(props) {
-  const Navigate = useNavigate();
+  const { plac, places } = props;
+  console.log(places);
 
-  const { places, plac } = props;
+  const [edited_data, setEditData] = useState([]);
+  const [loading, setIsLoading] = useState(true);
 
+  // const navigate = useNavigate();
   const onDelete = (id) => {
     fetch(
       `https://react-start-dce6d-default-rtdb.firebaseio.com/meetups/${id}.json`,
@@ -37,33 +41,44 @@ function MeetupList(props) {
   };
   ///////////////////////////
 
-  
   const onEdit = (id) => {
     fetch(
-      `https://react-start-dce6d-default-rtdb.firebaseio.com/meetups/${id}.json`,
-      {
-        method: "GET",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "http://localhost",
-          "Access-Control-Allow-Methods": "GET",
-        },
-      }
+      `https://react-start-dce6d-default-rtdb.firebaseio.com/meetups/${id}.json`
     )
-      .then((data) => {
-          const item_details = {
-            id: data.id,
-            title: data.title,
-            image: data.image,
-            description: data.description,
-          };
+      .then((res) => {
+        return res.json();
       })
+      .then((data) => {
+        console.log(data);
+
+        const item_details = {
+          id: id,
+          title: data.title,
+          image: data.image,
+          description: data.description,
+        };
+        setIsLoading(false);
+        setEditData(item_details);
+        console.log("editdata");
+        console.log(edited_data);
+      })
+
       .catch((err) => {
-        console.log("error1");
+        console.log(err);
       });
-    console.log(`id= ${id}`);
   };
+
+  ///////////
+  if (!loading) {
+    return (
+      (
+        <div className="text-center m-3">
+          <h3 className="m-3"> Edit Data</h3>
+        </div>
+      ),
+      (<EditForm data={edited_data} items={loading} />)
+    );
+  }
 
   return (
     <div>
@@ -78,10 +93,8 @@ function MeetupList(props) {
               onDelete(place.id);
             }}
             onEdit={() => {
-              
-              onEdit(this.item_details);
+              onEdit(place.id);
             }}
-            id={place.id}
           />
         ))}
       </ul>

@@ -10,12 +10,13 @@ function AllMeetup() {
     setError("")
 
     fetch("https://react-start-dce6d-default-rtdb.firebaseio.com/meetups.json")
-      .then((responce) => {
-        if (responce) {
-          return responce.json();
+      .then((response) => {
+        if (response) {
+          return response.json();
         }
       })
       .then((data) => {
+        console.log(data)
         const meetups = [];
         for (const key in data) {
           const meetup = {
@@ -32,7 +33,7 @@ function AllMeetup() {
       .catch(() => {
         setIsLoading(false);
          setError("Couldn't find products, retry later!");
-        console.log("error in fetch open network ")
+        console.log("error in fetch(firebase api) open network ")
       });
   }, []);
 

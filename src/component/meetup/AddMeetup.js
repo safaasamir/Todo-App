@@ -3,38 +3,7 @@ import style from "./AddMeetUp.module.css";
 function AddMeetUp(props) {
   const [loading, setLoading] = useState(false);
   const { OnAddmeetup } = props;
-  // const[onChange,setonChange] = useState({
-  //   title:"aa",
-  //   img:"",
-  //   description:"",
-  //   error:{}
-
-  // })
-  // function handelerChange(e){
-  // // const title = {...onChange.title}
-  // //   title = e.currentTarget.value
-  // }
-  // function Submithandiler(e){
-  // e.preventDefault();
-
-  // const error = validate();
-  // if(!error) return;
-  // }
-
-  //  const validate =()=>
-  // {
-  //   let errors = {};
-  //   if (!onChange.title.trim()) {
-  //     errors.title = "title is required!";
-  //   }
-  //   if (!onChange.img) {
-  //     errors.img = "img is required!";
-  //   }
-  //   if (!onChange.description) {
-  //     errors.description = "description is required!";
-  //   }
-  //   return !Object.keys(errors).length;
-  // }
+  
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const descriptionInputRef = useRef();
